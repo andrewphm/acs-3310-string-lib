@@ -27,8 +27,31 @@ class StringFormatter {
       })
       .join(' ');
   }
+
+  static removeExtraSpaces(string) {
+    return string.trim().replace(/\s+/g, ' ');
+  }
+
+  static kebobCase(string, charToReplace = '-') {
+    string = string.replace(/[^a-zA-Z0-9 ]/g, '');
+    return this.removeExtraSpaces(string).toLowerCase().replace(/ /g, charToReplace);
+  }
+
+  static snakeCase(string) {
+    return this.kebobCase(string, '_');
+  }
+
+  static camelCase(string) {
+    let words = string.split(' ');
+    return (
+      words[0].toLowerCase() +
+      words
+        .slice(1)
+        .map((word) => this.capitalizeFirstLetter(word))
+        .join('')
+    );
+  }
 }
 
-const capitalized = StringFormatter.capitalizeFirstLetter('dorothy');
 
-console.log(capitalized); // Dorothy
+
