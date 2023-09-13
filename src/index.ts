@@ -65,7 +65,6 @@ export default class StringFormatter {
   }
 
   static isEmpty(string: string) {
-    // You can use string.trim() to remove spaces at the beginning and end of the string. What's left is either empty characters like returns, enter or tab, or other characters. Loop over the remaining characters, if you find a character that is not \n, \r, or \t return false. If you got to the end of the loop return true.
     let trimmedString = string.trim();
     for (let i = 0; i < trimmedString.length; i++) {
       if (trimmedString[i] !== '\n' && trimmedString[i] !== '\r' && trimmedString[i] !== '\t') {
